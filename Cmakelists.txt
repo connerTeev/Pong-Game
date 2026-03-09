@@ -3,15 +3,6 @@ project(Pong)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# -------------------------------------------------------
-# Raylib paths — adjust these if your install is elsewhere
-# -------------------------------------------------------
-set(RAYLIB_INCLUDE_DIR "C:/raylib/include")
-set(RAYLIB_LIB_DIR     "C:/raylib/lib")
-
-include_directories(${RAYLIB_INCLUDE_DIR})
-link_directories(${RAYLIB_LIB_DIR})
-
 # Source files
 add_executable(Pong
     main.cpp
@@ -19,10 +10,28 @@ add_executable(Pong
     Paddle.cpp
 )
 
-# Link raylib and required Windows libraries
-target_link_libraries(Pong
-    raylib
-    opengl32
-    gdi32
-    winmm
-)
+if (WIN32)
+    # -------------------------------------------------------
+    # Windows — install raylib to C:\raylib with this layout:
+    #   C:\raylib\include\raylib.h
+    #   C:\raylib\lib\libraylib.a
+    # -------------------------------------------------------
+    target_include_directories(Pong PRIVATE "C:/raylib/include")
+    target_link_directories(Pong PRIVATE "C:/raylib/lib")
+    target_link_libraries(Pong raylib opengl32 gdi32 winmm)
+
+elseif (APPLE)
+    # -------------------------------------------------------
+    # macOS — install raylib via Homebrew: brew install raylib
+    # -------------------------------------------------------
+    find_package(raylib REQUIRED)
+    target_link_libraries(Pong raylib)
+
+elseif (UNIX)
+    # -------------------------------------------------------
+    # Linux — install raylib via package manager or from source
+    # -------------------------------------------------------
+    find_package(raylib REQUIRED)
+    target_link_libraries(Pong raylib m dl pthread)
+
+endif()

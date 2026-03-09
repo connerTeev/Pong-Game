@@ -31,25 +31,47 @@
 
 - C++17 or later
 - [raylib](https://www.raylib.com/) v4.0+
-- A C++ compiler — `g++`, `clang++`, or MSVC
+- [CMake](https://cmake.org/download/) 3.15+
+- A C++ compiler — `g++` / MinGW-w64 on Windows
 
 ---
 
 ## 🚀 Building
 
-**Linux / macOS**
-
-```bash
-g++ main.cpp Ball.cpp Paddle.cpp -o pong -lraylib -lm
-```
-
 **Windows (MinGW)**
 
+Install raylib and place the files at:
+```
+C:\raylib\include\raylib.h
+C:\raylib\lib\libraylib.a
+```
+Then build:
 ```bash
-g++ main.cpp Ball.cpp Paddle.cpp -o pong.exe -lraylib -lopengl32 -lgdi32 -lwinmm
+mkdir build
+cd build
+cmake .. -G "MinGW Makefiles"
+cmake --build .
 ```
 
-> Make sure raylib headers and libraries are on your include/library paths.
+**macOS**
+
+```bash
+brew install raylib
+mkdir build && cd build
+cmake ..
+cmake --build .
+```
+
+**Linux**
+
+```bash
+sudo apt install libraylib-dev  # or equivalent for your distro
+mkdir build && cd build
+cmake ..
+cmake --build .
+```
+
+Your executable will appear in the `build` folder. For subsequent builds, only `cmake --build .` is needed.
 
 ---
 
