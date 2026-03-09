@@ -1,12 +1,13 @@
 # 🏓 Pong Game
 
-> A classic arcade Pong experience rebuilt in C++ with smooth physics, a reactive CPU opponent, and progressive speed mechanics.
+> A classic arcade Pong experience rebuilt in C++ with smooth physics, a reactive CPU opponent, difficulty selection, and progressive speed mechanics.
 
 ---
 
 ## ✨ Features
 
 - 🎮 **Player vs CPU** — go head-to-head against a reactive CPU opponent
+- 🧠 **Difficulty selection** — choose Easy, Medium, or Hard from the startup menu
 - 📐 **Angle-based deflection** — where you hit the paddle changes the ball's trajectory
 - ⚡ **Progressive speed** — rallies get faster the longer they go, resetting on each score
 - 🏆 **Live scoreboard** — scores displayed in real time
@@ -18,7 +19,7 @@
 
 | File | Description |
 |------|-------------|
-| `main.cpp` | Game loop, initialization & collision detection |
+| `main.cpp` | Game loop, menu, initialization & collision detection |
 | `Ball.cpp / Ball.h` | Ball movement, physics & speed scaling |
 | `Paddle.cpp / Paddle.h` | Player and CPU paddle logic |
 | `Colors.h` | Custom color palette |
@@ -57,16 +58,29 @@ g++ main.cpp Ball.cpp Paddle.cpp -o pong.exe -lraylib -lopengl32 -lgdi32 -lwinmm
 |-----|--------|
 | Arrow Up | Move paddle up |
 | Arrow Down | Move paddle down |
-| ESC / close window | Quit |
+| ESC | Return to menu |
+| Close window | Quit |
 
 ---
 
 ## 🎯 How to Play
 
+- On startup, select a difficulty and press **Start Game**
 - You control the **right paddle** — the CPU controls the left
 - Get the ball past your opponent to score a point
 - Hit the **edge of your paddle** for sharper, trickier angles
-- Survive long rallies — the ball speeds up every 4 hits and resets to base speed when someone scores
+- Survive long rallies — the ball speeds up every 4 hits and resets when someone scores
+- Press **ESC** at any time to return to the menu
+
+---
+
+## 🧠 Difficulty Levels
+
+| Difficulty | CPU Speed | CPU Accuracy |
+|------------|-----------|--------------|
+| Easy | Slow | Aims imprecisely |
+| Medium | Moderate | Slight offset tracking |
+| Hard | Fast | Near-perfect tracking |
 
 ---
 

@@ -28,11 +28,14 @@ void Paddle::Update()
 
 void CpuPaddle::Update(int ball_y)
 {
-    if (y + height / 2 > ball_y)
-        y -= speed;
+    // Apply reaction offset to simulate imperfect CPU tracking on lower difficulties
+    float target_y = ball_y + reaction_offset;
 
-    if (y + height / 2 <= ball_y)
-        y += speed;
+    if (y + height / 2 > target_y)
+        y -= speed * speed_multiplier;
+
+    if (y + height / 2 <= target_y)
+        y += speed * speed_multiplier;
 
     LimitMovement();
 }
