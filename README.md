@@ -2,6 +2,7 @@
 
 > A classic arcade Pong experience rebuilt in C++ with smooth physics, a reactive CPU opponent, difficulty selection, and progressive speed mechanics.
 
+![Gameplay](assets/gameplay.gif)
 ---
 
 ## ✨ Features
