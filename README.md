@@ -36,6 +36,20 @@
 
 ---
 
+## ⬇️ Download
+
+Get the project from GitHub:
+
+- 🔗 **Repository:** https://github.com/connerTeev/Pong-Game  
+- 📦 **Download ZIP:** https://github.com/connerTeev/Pong-Game/archive/refs/heads/main.zip  
+
+Or clone it:
+
+```bash
+git clone https://github.com/connerTeev/Pong-Game.git
+```
+---
+
 ## 🚀 Building
 
 **Windows (MinGW)**
